@@ -7,6 +7,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { EditorComponent } from './editor/editor.component';
 import { NotesComponent } from './notes/notes.component';
 import { FormsModule } from '@angular/forms';
+import { NoteTitlePipe } from './note-title.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
     TopBarComponent,
     EditorComponent,
     NotesComponent,
+    NoteTitlePipe,
   ],
   imports: [
     BrowserModule,

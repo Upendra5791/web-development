@@ -1,5 +1,4 @@
-
 <section (click)="selectNote()" *ngIf="viewType === 'sidebar'" [ngClass]="{selected: isSelected}">
-  <span class="note-item ">{{titleText}}</span><br/>
-<span class="time-stamp">{{time.hour}}:{{time.minutes}} {{time.AMPM}}</span>
+  <span class="note-item ">{{titleText | noteTitle}}</span><br/>
+  <span class="time-stamp">{{time.hour}}:{{time.minutes}} {{time.AMPM}}</span>
 </section>
