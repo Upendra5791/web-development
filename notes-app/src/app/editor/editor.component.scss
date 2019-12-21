@@ -1,0 +1,19 @@
+.sidebar {
+    border-right: 1px solid #ccc;
+    min-height: 60vh;
+}
+
+.editor {
+    .time-stamp {
+        color: #ccc;
+    }
+    textarea {
+        height: 800px;
+        outline: none;
+        width: 100%;
+        border: none;
+    }
+}
+
+
+

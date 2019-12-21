@@ -1,0 +1,17 @@
+<div class="editor-container row">
+
+  <section class="sidebar col-md-3 pr-0">
+
+    <div #notesList></div>
+
+  </section>
+
+
+  <section class="editor  col-md-9">
+    <span class="time-stamp"> {{time.day}} at {{time.hour}}:{{time.minutes}} {{time.AMPM}}</span>
+    <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue">
+  </textarea>
+
+  </section>
+
+</div>

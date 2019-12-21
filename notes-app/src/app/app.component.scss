@@ -1,0 +1,17 @@
+.page-container {
+    max-width: 1024px;
+    padding-top: 5rem;
+    margin: 0 auto;
+
+    .notesApp {
+        border: 1px solid grey;
+
+        .editor-container {
+           
+            .sidebar-container {
+                border-right: 1px solid #ccc;
+            }
+        }
+    }
+    
+}

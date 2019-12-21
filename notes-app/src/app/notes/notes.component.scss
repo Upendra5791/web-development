@@ -1,0 +1,16 @@
+section {
+    overflow-x: hidden;
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem;
+    .note-item {
+        white-space: nowrap;
+    }
+
+    &.selected {
+        background-color: beige;
+    }
+
+    .time-stamp {
+        color: #ccc;
+    }
+}
