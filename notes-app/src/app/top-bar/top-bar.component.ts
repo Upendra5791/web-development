@@ -8,20 +8,19 @@ import { NotesService } from '../notes.service';
 })
 export class TopBarComponent implements OnInit {
 
+  isExpanded = true;
+
   constructor(
     private notesService: NotesService
   ) { }
 
   ngOnInit() {
 
-    this.notesService.sideNavbarToggle.subscribe(bar => {
-
-    });
-
   }
 
   toggleSideBar = () => {
-    this.notesService.sideNavbarToggle.next(true);
+    this.isExpanded = !this.isExpanded;
+    this.notesService.sideNavbarToggle.next(this.isExpanded);
   }
 
   deleteNote = () => {
@@ -29,8 +28,7 @@ export class TopBarComponent implements OnInit {
   }
 
   createNote = () => {
-    this.notesService.createNote.next(true)
-    
+    this.notesService.createNote.next(true);
   }
 
 }

@@ -17,6 +17,7 @@ export class EditorComponent implements OnInit {
     minutes: 0,
     AMPM: 'AM'
   };
+  sidebarExpanded = true;
 
   selectedNote: NotesComponent = new NotesComponent();
   notesList = [];
@@ -75,10 +76,15 @@ export class EditorComponent implements OnInit {
       }
     });
 
+    this.notesService.sideNavbarToggle.subscribe(isExpanded => {
+      console.log(isExpanded);
+      this.sidebarExpanded = isExpanded;
+
+    });
+
   }
 
   inputEdit = () => {
-    // this.selectedNote.textValue = this.editorText;
     this.selectedNote.titleText = this.selectedNote.textValue;
     this.selectedNote.time = this.getTime();
 

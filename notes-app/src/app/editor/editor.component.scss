@@ -1,6 +1,17 @@
 .sidebar {
     border-right: 1px solid #ccc;
     min-height: 60vh;
+
+    &.collapsed {
+        display: none;
+
+        +.editor {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding-right: 1.5rem!important;
+            padding-left: 1.5rem!important;
+        }
+    }
 }
 
 .editor {
