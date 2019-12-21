@@ -38,12 +38,13 @@ header {
                     vertical-align: text-top;
                 }
             }
-            .search-container {
+            &.search-container {
+                width: 30%;
                 input {
                     border: 1px solid grey;
                     padding: 0.2rem 0.5rem;
                     border-radius: .25rem;
-                    width: 15rem;
+                    width: 100%;
                 }
             }
         }

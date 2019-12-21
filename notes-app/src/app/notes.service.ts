@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NotesService {
 
-  public sideNavbarToggle = new BehaviorSubject<any>(true);
+  public sideNavbarToggle = new BehaviorSubject<any>(null);
   public createNote = new BehaviorSubject<any>(false);
   public deleteNote = new BehaviorSubject<any>(false);
   public searchTerm = new BehaviorSubject<any>(null);

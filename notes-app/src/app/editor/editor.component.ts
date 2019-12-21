@@ -33,6 +33,10 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {
 
+    if (window.innerWidth < 426) {
+      this.sidebarExpanded = false;
+    }
+
     (async () => {
       this.notesList = this.localStorageService.fetchNotesList();
       if (this.notesList && this.notesList.length > 0) {
@@ -100,8 +104,10 @@ export class EditorComponent implements OnInit {
     });
 
     this.notesService.sideNavbarToggle.subscribe(isExpanded => {
-      console.log(isExpanded);
-      this.sidebarExpanded = isExpanded;
+      if (isExpanded !== null) {
+        console.log(isExpanded);
+        this.sidebarExpanded = isExpanded;
+      }
     });
 
     this.notesService.searchTerm.subscribe(term => {

@@ -19,7 +19,9 @@
 
   <section class="editor  col-9">
     <ng-container *ngIf="filteredNotes.length > 0">
-      <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
+      <div class="w-100 d-flex justify-content-center">
+        <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
+      </div>
       <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue"></textarea>
     </ng-container>
   </section>
