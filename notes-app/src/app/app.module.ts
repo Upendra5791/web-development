@@ -8,6 +8,7 @@ import { EditorComponent } from './editor/editor.component';
 import { NotesComponent } from './notes/notes.component';
 import { FormsModule } from '@angular/forms';
 import { NoteTitlePipe } from './note-title.pipe';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NoteTitlePipe } from './note-title.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -22,13 +22,24 @@
         .note-item {
             white-space: nowrap;
         }
+
+        .note-line {
+            white-space: nowrap;
+            .time-stamp {
+                margin-right: .5rem;
+            }
+            .note-text {
+                font-size: 0.8rem;
+                color: darkgray;
+            }
+        }
     
         &.selected {
             background-color: beige;
         }
     
         .time-stamp {
-            color: #ccc;
+            color: grey;
             font-size: 0.8rem;
             font-weight: 400;
         }
