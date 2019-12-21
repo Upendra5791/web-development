@@ -7,13 +7,44 @@ header {
         display: flex;
         list-style: none;
         
-        li{
+        li {
             margin: 0 .5rem;
-        }
-        li.search-container {
-            input {
-                border: 1px solid grey;
-                padding: 0.2rem;
+
+            .icon {
+                height: 100%;
+                background: white;
+                border-radius: 22%;
+            }
+
+            .sidebar-icon-container {
+
+                svg {
+                    vertical-align: text-bottom;
+                }
+            }
+
+            .delete-icon-container {
+                width: 2.5rem;
+                svg {
+                    margin-left: 0.5rem;
+                    vertical-align: middle;
+                }
+            }
+
+            .create-icon-container {
+                width: 2.5rem;
+                svg {
+                    margin-left: 0.3rem;
+                    vertical-align: text-top;
+                }
+            }
+            .search-container {
+                input {
+                    border: 1px solid grey;
+                    padding: 0.2rem 0.5rem;
+                    border-radius: .25rem;
+                    width: 15rem;
+                }
             }
         }
     }
