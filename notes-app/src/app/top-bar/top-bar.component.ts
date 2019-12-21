@@ -9,6 +9,7 @@ import { NotesService } from '../notes.service';
 export class TopBarComponent implements OnInit {
 
   isExpanded = true;
+  searchTerm = '';
 
   constructor(
     private notesService: NotesService
@@ -29,6 +30,10 @@ export class TopBarComponent implements OnInit {
 
   createNote = () => {
     this.notesService.createNote.next(true);
+  }
+
+  search() {
+    this.notesService.searchTerm.next(this.searchTerm);
   }
 
 }

@@ -1,8 +1,15 @@
 <div class="editor-container row">
 
   <section class="sidebar col-md-3 pr-0" [ngClass]="{collapsed: !sidebarExpanded}">
-
     <div #notesList></div>
+
+    <div *ngFor="let note of filteredNotes">
+      <!-- <app-notes [notesObject]="note"></app-notes> -->
+      <div #noteItem (click)="selectNote(note.id)" class="note-list-item" *ngIf="note.viewType === 'sidebar'" [ngClass]="{selected: note.isSelected}">
+        <span class="note-item ">{{note.titleText | noteTitle}}</span><br/>
+        <span class="time-stamp">{{note.time.hour}}:{{note.time.minutes}} {{note.time.AMPM}}</span>
+      </div>
+    </div>
 
   </section>
 
