@@ -8,7 +8,7 @@
 
 
   <section class="editor  col-md-9">
-    <span class="time-stamp"> {{time.day}} at {{time.hour}}:{{time.minutes}} {{time.AMPM}}</span>
+    <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
     <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue">
   </textarea>
 

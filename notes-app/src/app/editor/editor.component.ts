@@ -80,6 +80,7 @@ export class EditorComponent implements OnInit {
   inputEdit = () => {
     // this.selectedNote.textValue = this.editorText;
     this.selectedNote.titleText = this.selectedNote.textValue;
+    this.selectedNote.time = this.getTime();
 
   }
 
