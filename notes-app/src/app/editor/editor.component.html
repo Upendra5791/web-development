@@ -1,6 +1,6 @@
 <div *ngIf="notesList" class="editor-container row">
 
-  <section class="sidebar col-md-3 pr-0" [ngClass]="{collapsed: !sidebarExpanded}">
+  <section class="sidebar col-3 pr-0" [ngClass]="{collapsed: !sidebarExpanded}">
     <div #notesList></div>
 
     <div *ngFor="let note of filteredNotes">
@@ -17,11 +17,11 @@
   </section>
 
 
-  <section class="editor  col-md-9">
-    <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
-    <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue">
-  </textarea>
-
+  <section class="editor  col-9">
+    <ng-container *ngIf="filteredNotes.length > 0">
+      <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
+      <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue"></textarea>
+    </ng-container>
   </section>
 
 </div>

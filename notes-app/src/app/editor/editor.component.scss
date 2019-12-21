@@ -16,15 +16,17 @@
     }
 
     .note-list-item {
-        overflow-x: hidden;
         border-bottom: 1px solid #ccc;
         padding: 0.5rem;
-        .note-item {
-            white-space: nowrap;
-        }
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         .note-line {
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
             .time-stamp {
                 margin-right: .5rem;
             }

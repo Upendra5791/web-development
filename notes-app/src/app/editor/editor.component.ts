@@ -36,6 +36,7 @@ export class EditorComponent implements OnInit {
     (async () => {
       this.notesList = this.localStorageService.fetchNotesList();
       if (this.notesList && this.notesList.length > 0) {
+        this.resetFocus();
         this.selectedNote = this.notesList[0];
         this.filteredNotes = this.notesList;
       } else {
@@ -110,8 +111,6 @@ export class EditorComponent implements OnInit {
         if (this.filteredNotes.length > 0) {
           this.filteredNotes[0].isSelected = true;
           this.selectedNote = this.filteredNotes[0];
-        } else {
-          this.selectedNote.textValue = '';
         }
       } else {
         this.filteredNotes = this.notesList;
