@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactory, ComponentFactoryResolver, ViewChild, ViewContainerRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, ElementRef, AfterViewInit } from '@angular/core';
 import { NotesService } from '../notes.service';
 import { LocalStorageService } from '../local-storage.service';
 
@@ -7,18 +7,11 @@ import { LocalStorageService } from '../local-storage.service';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, AfterViewInit{
 
   editorText = '';
   titleText = 'New Note';
-  time = {
-    day: '',
-    hour: 0,
-    minutes: 0,
-    AMPM: 'AM'
-  };
   sidebarExpanded = true;
-
   selectedNote: any;
   notesList = [];
   filteredNotes = [];
@@ -37,6 +30,7 @@ export class EditorComponent implements OnInit {
       this.sidebarExpanded = false;
     }
 
+    /* fetch the notes list from browser local storage during application start */
     (async () => {
       this.notesList = this.localStorageService.fetchNotesList();
       if (this.notesList && this.notesList.length > 0) {
@@ -52,42 +46,23 @@ export class EditorComponent implements OnInit {
     this.notesService.createNote.subscribe(note => {
       if (note) {
         const noteObj = {
-          time: this.getTime(),
-          id: new Date().getTime(),
+          time: Date.now(),
+          id: Date.now(),
           isSelected: true,
           viewType: 'sidebar',
           titleText: 'New Note',
           textValue: ''
         };
-  
+
         this.resetFocus();
-  
         this.notesList.splice(0, 0, noteObj);
         this.selectedNote = noteObj;
         this.filteredNotes = this.notesList;
-  
         this.updateLocalStorage();
-  
-        /* componentRef.instance.selectNoteDOM.subscribe((noteId) => {
-          // this.selectedNote = this.notesList.filter((note) => return note.id === noteId);
-          this.notesList.forEach((n) => {
-            if (n.id === noteId) {
-              this.selectedNote = n;
-              n.isSelected = true;
-            } else {
-              n.isSelected = false;
-            }
-          });
+        if (this.editorInput) {
           this.editorInput.nativeElement.focus();
-          console.log(this.notesList);
-        }); */
+        }
       }
-     /*  const template = NotesComponent;
-      const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(template);
-        const componentRef = factory.create(this.entry.parentInjector);
-      // const componentRef = this.entry.createComponent(factory);
-      // this.entry.insert(componentRef.hostView); */
-
     });
 
     this.notesService.deleteNote.subscribe(note => {
@@ -105,7 +80,6 @@ export class EditorComponent implements OnInit {
 
     this.notesService.sideNavbarToggle.subscribe(isExpanded => {
       if (isExpanded !== null) {
-        console.log(isExpanded);
         this.sidebarExpanded = isExpanded;
       }
     });
@@ -120,30 +94,27 @@ export class EditorComponent implements OnInit {
         }
       } else {
         this.filteredNotes = this.notesList;
+        this.resetFocus();
+        this.selectedNote = this.filteredNotes[0];
+        this.selectedNote.isSelected = true;
       }
     });
 
   }
 
+  ngAfterViewInit() {
+    if (this.editorInput) {
+      this.editorInput.nativeElement.focus();
+    }
+  }
+
   inputEdit = () => {
-    this.selectedNote.titleText = this.selectedNote.textValue;
-    this.selectedNote.time = this.getTime();
+    this.selectedNote.titleText = this.selectedNote.textValue.substr(0, 40);
+    this.selectedNote.time = Date.now();
     this.updateLocalStorage();
   }
 
-  getTime = () => {
-    const currentTime = new Date();
-    const time = {
-        hour: currentTime.getHours(),
-        day: currentTime.toDateString(),
-        minutes: currentTime.getMinutes(),
-        AMPM: (currentTime.getHours() > 12) ? 'PM' : 'AM'
-      };
-    return time;
-  }
-
   selectNote = (noteId) => {
-    console.log(noteId);
     this.filteredNotes.forEach((n) => {
       if (n.id === noteId) {
         this.selectedNote = n;
@@ -153,7 +124,6 @@ export class EditorComponent implements OnInit {
       }
     });
     this.editorInput.nativeElement.focus();
-    console.log(this.notesList);
   }
 
   resetFocus = () => {

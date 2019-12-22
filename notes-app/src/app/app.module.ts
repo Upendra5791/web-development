@@ -5,27 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { EditorComponent } from './editor/editor.component';
-import { NotesComponent } from './notes/notes.component';
 import { FormsModule } from '@angular/forms';
 import { NoteTitlePipe } from './note-title.pipe';
-import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     EditorComponent,
-    NotesComponent,
     NoteTitlePipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [NotesComponent]
 })
 export class AppModule { }

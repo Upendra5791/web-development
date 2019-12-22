@@ -16,7 +16,6 @@ export class LocalStorageService {
   }
 
   updateLocalStorage(notesList) {
-    console.log(notesList);
     this.storage.set(STORAGE_KEY, notesList);
   }
 }

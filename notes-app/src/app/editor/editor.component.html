@@ -1,14 +1,14 @@
 <div *ngIf="notesList" class="editor-container row">
-
+<!-- Side Bar Section -->
   <section class="sidebar col-3 pr-0" [ngClass]="{collapsed: !sidebarExpanded}">
     <div #notesList></div>
 
     <div *ngFor="let note of filteredNotes">
-      <!-- <app-notes [notesObject]="note"></app-notes> -->
-      <div #noteItem (click)="selectNote(note.id)" class="note-list-item" *ngIf="note.viewType === 'sidebar'" [ngClass]="{selected: note.isSelected}">
-        <span class="note-item ">{{note.titleText | noteTitle}}</span><br/>
-        <div class="note-line"> 
-          <span class="time-stamp">{{note.time.hour}}:{{note.time.minutes}} {{note.time.AMPM}}</span>
+      <div #noteItem (click)="selectNote(note.id)" class="note-list-item" *ngIf="note.viewType === 'sidebar'"
+        [ngClass]="{selected: note.isSelected}">
+        <span class="note-item ">{{note.titleText | noteTitle}}</span><br />
+        <div class="note-line">
+          <span class="time-stamp">{{note.time | date:'shortTime'}}</span>
           <span class="note-text">{{note.textValue}}</span>
         </div>
       </div>
@@ -16,11 +16,12 @@
 
   </section>
 
-
+<!-- Editor -->
   <section class="editor  col-9">
     <ng-container *ngIf="filteredNotes.length > 0">
       <div class="w-100 d-flex justify-content-center">
-        <span class="time-stamp"> {{selectedNote.time.day}} at {{selectedNote.time.hour}}:{{selectedNote.time.minutes}} {{selectedNote.time.AMPM}}</span>
+        <span class="time-stamp">{{selectedNote.time | date:'longDate'}} at
+          {{selectedNote.time | date:'shortTime'}}</span>
       </div>
       <textarea #editorInput *ngIf="selectedNote" (input)="inputEdit()" [(ngModel)]="selectedNote.textValue"></textarea>
     </ng-container>
